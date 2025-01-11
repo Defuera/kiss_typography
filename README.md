@@ -47,12 +47,12 @@ Body('Default body text'), // Same as BodyMedium
 Or Material Design:
 
 ```dart
-HeadlineLarge('Large Headline'), // Same as HeadlineLarge
-HeadlineMedium('Medium Headline'), // Same as HeadlineMedium
-HeadlineSmall('Small Headline'), // Same as HeadlineSmall
-TitleLarge('Large Title'), // Same as TitleLarge
-TitleMedium('Medium Title'), // Same as TitleMedium
-TitleSmall('Small Title'), // Same as TitleSmall
+HeadlineLarge('Large Headline'), 
+HeadlineMedium('Medium Headline'),
+HeadlineSmall('Small Headline'),
+TitleLarge('Large Title'), 
+TitleMedium('Medium Title'), 
+TitleSmall('Small Title'), 
 BodyMedium('Default body text'),
 BodyLarge('Larger body text'),
 BodySmall('Smaller body text'),
