@@ -31,3 +31,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Maximum lines (Body components)
 - Full integration with Flutter's ThemeData and TextTheme
 - Type aliases for semantic HTML-like usage
+
+## [0.5.1]
+
+### Fixed
+- Corrected README.md

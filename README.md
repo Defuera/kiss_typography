@@ -41,14 +41,19 @@ H3('Small Headline'), // Same as HeadlineSmall
 H4('Large Title'), // Same as TitleLarge
 H5('Medium Title'), // Same as TitleMedium
 H6('Small Title'), // Same as TitleSmall
+Body('Default body text'), // Same as BodyMedium
 ```
 
-### Body Text
-
-Use different body text sizes:
+Or Material Design:
 
 ```dart
-Body('Default body text'), // Same as BodyMedium
+HeadlineLarge('Large Headline'), // Same as HeadlineLarge
+HeadlineMedium('Medium Headline'), // Same as HeadlineMedium
+HeadlineSmall('Small Headline'), // Same as HeadlineSmall
+TitleLarge('Large Title'), // Same as TitleLarge
+TitleMedium('Medium Title'), // Same as TitleMedium
+TitleSmall('Small Title'), // Same as TitleSmall
+BodyMedium('Default body text'),
 BodyLarge('Larger body text'),
 BodySmall('Smaller body text'),
 ```
@@ -79,7 +84,7 @@ Theme(
       // ... other text styles
     ),
   ),
-  child: Body('This text will use the theme's bodyLarge style'),
+  child: BodyLarge('This text will use the theme's bodyLarge style'),
 )
 ```
 
