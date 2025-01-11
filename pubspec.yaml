@@ -1,5 +1,5 @@
 name: kiss_typography
-description: "A new Flutter package project."
+description: "A simple, clean Flutter typography package that provides semantic text widgets following the KISS (Keep It Simple, Stupid) principle."
 version: 0.5.0
 homepage: https://github.com/WAMF/kiss_typography
 
