@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 abstract class LabelText extends StatelessWidget {
@@ -22,14 +21,18 @@ abstract class LabelText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final defaultStyle = DefaultTextStyle.of(context).style;
+    final themeStyle = getTextStyle(context);
+    final effectiveStyle =
+        themeStyle == null ? defaultStyle : defaultStyle.merge(themeStyle);
+
     return Text(
       text,
       textAlign: textAlign,
       overflow: overflow,
       maxLines: maxLines,
-      style: getTextStyle(context)?.copyWith(
-        color: color ?? defaultStyle.color,
-      ),
+      style: color != null
+          ? effectiveStyle.copyWith(color: color)
+          : effectiveStyle,
     );
   }
 }

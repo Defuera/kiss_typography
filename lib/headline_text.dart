@@ -17,12 +17,16 @@ abstract class HeadlineText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final defaultStyle = DefaultTextStyle.of(context).style;
+    final themeStyle = getTextStyle(context);
+    final effectiveStyle =
+        themeStyle == null ? defaultStyle : defaultStyle.merge(themeStyle);
+
     return Text(
       text,
       textAlign: textAlign,
-      style: getTextStyle(context)?.copyWith(
-        color: color ?? defaultStyle.color,
-      ),
+      style: color != null
+          ? effectiveStyle.copyWith(color: color)
+          : effectiveStyle,
     );
   }
 }
