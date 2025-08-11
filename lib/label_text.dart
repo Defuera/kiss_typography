@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-abstract class BodyText extends StatelessWidget {
-  const BodyText(
+abstract class LabelText extends StatelessWidget {
+  const LabelText(
     this.text, {
     super.key,
     this.color,
     this.textAlign,
-    this.maxLines,
     this.overflow,
+    this.maxLines,
   });
 
   final String text;
   final Color? color;
   final TextAlign? textAlign;
-  final int? maxLines;
   final TextOverflow? overflow;
+  final int? maxLines;
 
   TextStyle? getTextStyle(BuildContext context);
 
@@ -37,47 +37,47 @@ abstract class BodyText extends StatelessWidget {
   }
 }
 
-class BodySmall extends BodyText {
-  const BodySmall(
+class LabelLarge extends LabelText {
+  const LabelLarge(
     super.text, {
     super.key,
     super.color,
     super.textAlign,
-    super.maxLines,
     super.overflow,
+    super.maxLines,
   });
 
   @override
   TextStyle? getTextStyle(BuildContext context) =>
-      Theme.of(context).textTheme.bodySmall;
+      Theme.of(context).textTheme.labelLarge;
 }
 
-class BodyMedium extends BodyText {
-  const BodyMedium(
+class LabelMedium extends LabelText {
+  const LabelMedium(
     super.text, {
     super.key,
     super.color,
-    super.maxLines,
     super.textAlign,
     super.overflow,
+    super.maxLines,
   });
 
   @override
   TextStyle? getTextStyle(BuildContext context) =>
-      Theme.of(context).textTheme.bodyMedium;
+      Theme.of(context).textTheme.labelMedium;
 }
 
-class BodyLarge extends BodyText {
-  const BodyLarge(
+class LabelSmall extends LabelText {
+  const LabelSmall(
     super.text, {
     super.key,
-    super.maxLines,
     super.color,
     super.textAlign,
     super.overflow,
+    super.maxLines,
   });
 
   @override
   TextStyle? getTextStyle(BuildContext context) =>
-      Theme.of(context).textTheme.bodyLarge;
+      Theme.of(context).textTheme.labelSmall;
 }

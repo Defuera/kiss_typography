@@ -5,6 +5,7 @@ import 'package:kiss_typography/title_text.dart';
 export 'body_text.dart';
 export 'headline_text.dart';
 export 'title_text.dart';
+export 'label_text.dart';
 
 typedef H1 = HeadlineLarge;
 typedef H2 = HeadlineMedium;
