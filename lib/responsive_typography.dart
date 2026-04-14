@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+/// Font size overrides for each Material text style.
+///
+/// Only non-null fields are applied — a null value means the widget falls back
+/// to the size defined in [Theme.of(context).textTheme].
 class TypographyData {
   final double? headlineLarge;
   final double? headlineMedium;
@@ -69,7 +73,7 @@ class TypographyBreakpoints {
 
   const TypographyBreakpoints({
     this.medium = 600,
-    this.large = 1024,
+    this.large = 960,
   });
 }
 
