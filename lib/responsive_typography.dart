@@ -28,6 +28,39 @@ class TypographyData {
     this.labelMedium,
     this.labelSmall,
   });
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is TypographyData &&
+          headlineLarge == other.headlineLarge &&
+          headlineMedium == other.headlineMedium &&
+          headlineSmall == other.headlineSmall &&
+          titleLarge == other.titleLarge &&
+          titleMedium == other.titleMedium &&
+          titleSmall == other.titleSmall &&
+          bodyLarge == other.bodyLarge &&
+          bodyMedium == other.bodyMedium &&
+          bodySmall == other.bodySmall &&
+          labelLarge == other.labelLarge &&
+          labelMedium == other.labelMedium &&
+          labelSmall == other.labelSmall;
+
+  @override
+  int get hashCode => Object.hash(
+        headlineLarge,
+        headlineMedium,
+        headlineSmall,
+        titleLarge,
+        titleMedium,
+        titleSmall,
+        bodyLarge,
+        bodyMedium,
+        bodySmall,
+        labelLarge,
+        labelMedium,
+        labelSmall,
+      );
 }
 
 class TypographyBreakpoints {
