@@ -1,5 +1,10 @@
 import 'package:flutter/widgets.dart';
 
+/// Per-style font-size overrides for [Typography].
+///
+/// Every field is nullable: a `null` field means *no override* — the text
+/// widget falls back to the value defined in `Theme.of(context).textTheme`.
+/// Non-null fields replace the corresponding theme size.
 class TypographyData {
   final double? headlineLarge;
   final double? headlineMedium;
