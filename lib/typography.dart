@@ -1,9 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
-/// Font size overrides for each Material text style.
-///
-/// Only non-null fields are applied — a null value means the widget falls back
-/// to the size defined in [Theme.of(context).textTheme].
 class TypographyData {
   final double? headlineLarge;
   final double? headlineMedium;
@@ -32,6 +28,23 @@ class TypographyData {
     this.labelMedium,
     this.labelSmall,
   });
+
+  TypographyData merge(TypographyData other) {
+    return TypographyData(
+      headlineLarge: other.headlineLarge ?? headlineLarge,
+      headlineMedium: other.headlineMedium ?? headlineMedium,
+      headlineSmall: other.headlineSmall ?? headlineSmall,
+      titleLarge: other.titleLarge ?? titleLarge,
+      titleMedium: other.titleMedium ?? titleMedium,
+      titleSmall: other.titleSmall ?? titleSmall,
+      bodyLarge: other.bodyLarge ?? bodyLarge,
+      bodyMedium: other.bodyMedium ?? bodyMedium,
+      bodySmall: other.bodySmall ?? bodySmall,
+      labelLarge: other.labelLarge ?? labelLarge,
+      labelMedium: other.labelMedium ?? labelMedium,
+      labelSmall: other.labelSmall ?? labelSmall,
+    );
+  }
 
   @override
   bool operator ==(Object other) =>
@@ -67,59 +80,62 @@ class TypographyData {
       );
 }
 
-class TypographyBreakpoints {
-  final double medium;
-  final double large;
+class TypographyBreakpoint {
+  final double minWidth;
+  final double maxWidth;
+  final TypographyData overrides;
 
-  const TypographyBreakpoints({
-    this.medium = 600,
-    this.large = 960,
+  const TypographyBreakpoint({
+    required this.overrides,
+    this.minWidth = 0,
+    this.maxWidth = double.infinity,
   });
 }
 
-class ResponsiveTypography extends StatelessWidget {
-  final TypographyBreakpoints breakpoints;
-  final TypographyData small;
-  final TypographyData medium;
-  final TypographyData large;
-  final Widget child;
-
-  const ResponsiveTypography({
-    super.key,
-    this.breakpoints = const TypographyBreakpoints(),
-    required this.small,
-    required this.medium,
-    required this.large,
+class Typography extends StatelessWidget {
+  const Typography({
     required this.child,
+    this.data = const TypographyData(),
+    this.breakpoints = const <TypographyBreakpoint>[],
+    super.key,
   });
 
-  static TypographyData? of(BuildContext context) {
+  final Widget child;
+  final TypographyData data;
+  final List<TypographyBreakpoint> breakpoints;
+
+  static TypographyData? maybeOf(BuildContext context) {
     return context
-        .dependOnInheritedWidgetOfExactType<_TypographyDataScope>()
+        .dependOnInheritedWidgetOfExactType<_TypographyScope>()
         ?.data;
   }
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    final data = width >= breakpoints.large
-        ? large
-        : width >= breakpoints.medium
-            ? medium
-            : small;
-    return _TypographyDataScope(data: data, child: child);
+    if (breakpoints.isEmpty) {
+      return _TypographyScope(data: data, child: child);
+    }
+
+    final width = MediaQuery.sizeOf(context).width;
+    var resolved = data;
+    for (final bp in breakpoints) {
+      if (width >= bp.minWidth && width < bp.maxWidth) {
+        resolved = resolved.merge(bp.overrides);
+      }
+    }
+    return _TypographyScope(data: resolved, child: child);
   }
 }
 
-class _TypographyDataScope extends InheritedWidget {
+class _TypographyScope extends InheritedWidget {
   final TypographyData data;
 
-  const _TypographyDataScope({
+  const _TypographyScope({
     required this.data,
     required super.child,
   });
 
   @override
-  bool updateShouldNotify(_TypographyDataScope oldWidget) =>
+  bool updateShouldNotify(_TypographyScope oldWidget) =>
       data != oldWidget.data;
 }

@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:kiss_typography/responsive_typography.dart';
+import 'package:flutter/material.dart' hide Typography;
+import 'package:kiss_typography/typography.dart';
 
 abstract class LabelText extends StatelessWidget {
   const LabelText(
@@ -51,7 +51,7 @@ class LabelLarge extends LabelText {
   @override
   TextStyle? getTextStyle(BuildContext context) {
     final style = Theme.of(context).textTheme.labelLarge;
-    final fontSize = ResponsiveTypography.of(context)?.labelLarge;
+    final fontSize = Typography.maybeOf(context)?.labelLarge;
     return fontSize != null ? style?.copyWith(fontSize: fontSize) : style;
   }
 }
@@ -69,7 +69,7 @@ class LabelMedium extends LabelText {
   @override
   TextStyle? getTextStyle(BuildContext context) {
     final style = Theme.of(context).textTheme.labelMedium;
-    final fontSize = ResponsiveTypography.of(context)?.labelMedium;
+    final fontSize = Typography.maybeOf(context)?.labelMedium;
     return fontSize != null ? style?.copyWith(fontSize: fontSize) : style;
   }
 }
@@ -87,7 +87,7 @@ class LabelSmall extends LabelText {
   @override
   TextStyle? getTextStyle(BuildContext context) {
     final style = Theme.of(context).textTheme.labelSmall;
-    final fontSize = ResponsiveTypography.of(context)?.labelSmall;
+    final fontSize = Typography.maybeOf(context)?.labelSmall;
     return fontSize != null ? style?.copyWith(fontSize: fontSize) : style;
   }
 }

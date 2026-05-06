@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:kiss_typography/responsive_typography.dart';
+import 'package:flutter/material.dart' hide Typography;
+import 'package:kiss_typography/typography.dart';
 
 abstract class BodyText extends StatelessWidget {
   const BodyText(
@@ -51,7 +51,7 @@ class BodySmall extends BodyText {
   @override
   TextStyle? getTextStyle(BuildContext context) {
     final style = Theme.of(context).textTheme.bodySmall;
-    final fontSize = ResponsiveTypography.of(context)?.bodySmall;
+    final fontSize = Typography.maybeOf(context)?.bodySmall;
     return fontSize != null ? style?.copyWith(fontSize: fontSize) : style;
   }
 }
@@ -69,7 +69,7 @@ class BodyMedium extends BodyText {
   @override
   TextStyle? getTextStyle(BuildContext context) {
     final style = Theme.of(context).textTheme.bodyMedium;
-    final fontSize = ResponsiveTypography.of(context)?.bodyMedium;
+    final fontSize = Typography.maybeOf(context)?.bodyMedium;
     return fontSize != null ? style?.copyWith(fontSize: fontSize) : style;
   }
 }
@@ -87,7 +87,7 @@ class BodyLarge extends BodyText {
   @override
   TextStyle? getTextStyle(BuildContext context) {
     final style = Theme.of(context).textTheme.bodyLarge;
-    final fontSize = ResponsiveTypography.of(context)?.bodyLarge;
+    final fontSize = Typography.maybeOf(context)?.bodyLarge;
     return fontSize != null ? style?.copyWith(fontSize: fontSize) : style;
   }
 }

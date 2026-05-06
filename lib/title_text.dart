@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:kiss_typography/responsive_typography.dart';
+import 'package:flutter/material.dart' hide Typography;
+import 'package:kiss_typography/typography.dart';
 
 abstract class TitleText extends StatelessWidget {
   const TitleText(
@@ -47,7 +47,7 @@ class TitleLarge extends TitleText {
   @override
   TextStyle? getTextStyle(BuildContext context) {
     final style = Theme.of(context).textTheme.titleLarge;
-    final fontSize = ResponsiveTypography.of(context)?.titleLarge;
+    final fontSize = Typography.maybeOf(context)?.titleLarge;
     return fontSize != null ? style?.copyWith(fontSize: fontSize) : style;
   }
 }
@@ -64,7 +64,7 @@ class TitleMedium extends TitleText {
   @override
   TextStyle? getTextStyle(BuildContext context) {
     final style = Theme.of(context).textTheme.titleMedium;
-    final fontSize = ResponsiveTypography.of(context)?.titleMedium;
+    final fontSize = Typography.maybeOf(context)?.titleMedium;
     return fontSize != null ? style?.copyWith(fontSize: fontSize) : style;
   }
 }
@@ -81,7 +81,7 @@ class TitleSmall extends TitleText {
   @override
   TextStyle? getTextStyle(BuildContext context) {
     final style = Theme.of(context).textTheme.titleSmall;
-    final fontSize = ResponsiveTypography.of(context)?.titleSmall;
+    final fontSize = Typography.maybeOf(context)?.titleSmall;
     return fontSize != null ? style?.copyWith(fontSize: fontSize) : style;
   }
 }
